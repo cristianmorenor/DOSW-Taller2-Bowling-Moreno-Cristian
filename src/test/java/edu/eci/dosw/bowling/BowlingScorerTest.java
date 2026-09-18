@@ -53,4 +53,22 @@ class BowlingScorerTest {
         // Act & Assert
         assertEquals(16, game.score());
     }
+
+
+    @Test
+    @DisplayName("Strike en frame 1 suma 10 mas los dos tiros siguientes")
+    void strikeInFirstFrame_addsBonusFromNextTwoRolls() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        game.roll(10); // strike frame 1
+        game.roll(4);
+        game.roll(3); // frame 2
+        for (int i = 0; i < 8; i++) {
+            game.roll(0);
+            game.roll(0);
+        }
+
+        // Act & Assert
+        assertEquals(24, game.score());
+    }
 }
