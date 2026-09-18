@@ -38,4 +38,17 @@ class BowlingGameTest {
                 () -> game.roll(-1)
         );
     }
+
+    @Test
+    @DisplayName("roll(11) lanza IllegalArgumentException")
+    void rollAbove10Pins_throwsException() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> game.roll(11)
+        );
+    }
 }
