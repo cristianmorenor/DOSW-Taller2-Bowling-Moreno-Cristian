@@ -65,6 +65,7 @@ Las clases más ejercitadas fueron `BowlingGame` (por los casos de los Módulos 
 | [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17 | Módulo A - `roll()` |
 | [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17 | Módulo B - `BowlingScorer.calculate()` |
 | [Módulo C: BowlingGame.isComplete() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/3) | 2026-09-17 | Módulo C - `isComplete()` |
+| [Parte 4: Cobertura JaCoCo y analisis SonarQube + fixes de calidad](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/4) | 2026-09-18 | Parte 4 - JaCoCo y SonarQube |
 
 ## 7. Reflexión técnica
 
