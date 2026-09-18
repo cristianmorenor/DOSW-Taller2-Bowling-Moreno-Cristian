@@ -60,6 +60,9 @@ public class BowlingGame {
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */
     public int score() {
+        if (!isComplete()) {
+            throw new IllegalStateException("El juego no esta completo");
+        }
         return new BowlingScorer().calculate(frames);
     }
 
