@@ -106,4 +106,23 @@ class BowlingScorerTest {
         // Act & Assert
         assertEquals(150, game.score());
     }
+
+    private void rollPerfectGame(BowlingGame game) {
+        for (int i = 0; i < 12; i++) {
+            game.roll(10);
+        }
+    }
+
+    @Test
+    @DisplayName("Juego perfecto - 12 strikes - score debe ser 300")
+    void perfectGame_scores300() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act
+        rollPerfectGame(game);
+
+        // Assert
+        assertEquals(300, game.score());
+    }
 }
