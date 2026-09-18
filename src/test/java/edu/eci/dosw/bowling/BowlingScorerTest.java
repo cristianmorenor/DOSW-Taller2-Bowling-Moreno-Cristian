@@ -20,4 +20,19 @@ class BowlingScorerTest {
         // Act & Assert
         assertEquals(0, game.score());
     }
+
+
+    @Test
+    @DisplayName("Juego sin strikes ni spares retorna la suma directa de los tiros")
+    void gameWithoutBonuses_scoresSumOfRolls() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 10; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+
+        // Act & Assert
+        assertEquals(70, game.score());
+    }
 }
