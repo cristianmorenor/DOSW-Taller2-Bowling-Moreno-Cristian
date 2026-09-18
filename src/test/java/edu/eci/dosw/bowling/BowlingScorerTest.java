@@ -89,4 +89,21 @@ class BowlingScorerTest {
         // Act & Assert
         assertEquals(49, game.score());
     }
+
+    @Test
+    @DisplayName("Todos spares con ultimo tiro 5 retorna score 150")
+    void allSparesWithFinalRollFive_scores150() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(5);
+            game.roll(5);
+        }
+        game.roll(5);
+        game.roll(5);
+        game.roll(5);
+
+        // Act & Assert
+        assertEquals(150, game.score());
+    }
 }
