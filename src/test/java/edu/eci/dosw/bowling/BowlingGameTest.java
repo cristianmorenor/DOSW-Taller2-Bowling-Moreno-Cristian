@@ -51,4 +51,18 @@ class BowlingGameTest {
                 () -> game.roll(11)
         );
     }
+
+    @Test
+    @DisplayName("Dos tiros en un frame que suman mas de 10 lanza IllegalArgumentException")
+    void rollsExceedingTenInFrame_throwsException() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        game.roll(7);
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> game.roll(6)
+        );
+    }
 }
