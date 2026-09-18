@@ -20,12 +20,16 @@ public class BowlingGame {
     /** Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10.
      *  Lanza IllegalStateException si el juego ya termino. */
     public void roll(int pins) {
-        if (pins < 0 || pins > 10) {
-            throw new IllegalArgumentException("El numero de pinos debe estar entre 0 y 10: " + pins);
-        }
+        validatePinCount(pins);
         Frame frame = new Frame();
         frame.addRoll(pins);
         frames.add(frame);
+    }
+
+    private void validatePinCount(int pins) {
+        if (pins < 0 || pins > 10) {
+            throw new IllegalArgumentException("El numero de pinos debe estar entre 0 y 10: " + pins);
+        }
     }
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */
