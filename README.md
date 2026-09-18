@@ -61,11 +61,28 @@ Las clases más ejercitadas fueron `BowlingGame` (por los casos de los Módulos 
 ## 6. Pull Requests
 
 | PR | Fecha de merge | Módulo que cubre |
-|----|-----------------|-------------------|
-| [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17 | Módulo A - `roll()` |
-| [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17 | Módulo B - `BowlingScorer.calculate()` |
-| [Módulo C: BowlingGame.isComplete() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/3) | 2026-09-17 | Módulo C - `isComplete()` |
+|----|----------------|-------------------|
+| [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17     | Módulo A - `roll()` |
+| [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17     | Módulo B - `BowlingScorer.calculate()` |
+| [Módulo C: BowlingGame.isComplete() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/3) | 2026-09-17     | Módulo C - `isComplete()` |
+| [Parte 4: Cobertura JaCoCo y analisis SonarQube + fixes de calidad](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/4) | 2026-09-17     | Parte 4 - JaCoCo y SonarQube |
 
 ## 7. Reflexión técnica
 
-_Pendiente: se responde al finalizar todos los módulos._
+## 7. Reflexión técnica
+
+**¿Qué aprendiste sobre TDD al desarrollar este proyecto?**
+
+Antes de este taller tenía la idea de que TDD era básicamente "escribir el test antes que el código porque toca", casi como un trámite. Haciendo el ejercicio con Bowling me di cuenta de que en realidad cambia la forma en que uno piensa el problema: antes de escribir una sola línea de `BowlingGame` o `BowlingScorer` tenía que preguntarme qué debía pasar en cada caso, incluyendo los raros (un strike en el décimo frame, dos strikes seguidos, un juego perfecto). Eso me obligó a entender la lógica del bowling a fondo antes de programar, y no al revés. También noté que el ciclo RED-GREEN-REFACTOR evita que uno se adelante a "resolver todo de una" — primero hago que pase el caso más simple, y solo cuando ya está verde me preocupo por dejar el código bien escrito.
+
+**¿En qué casos los tests pasaron "de primera" sin necesidad de nuevo código, y por qué es correcto?**
+
+Esto me pasó justo en el módulo B, después de refactorizar el cálculo de puntaje en el caso B4. Ahí generalizamos el algoritmo para que manejara strikes, spares y frames normales de forma unificada, en lugar de tener casos especiales sueltos. Cuando después agregué nuevos casos de prueba, varios pasaron sin tener que tocar el código de `BowlingScorer`. Al principio me generó dudas — pensé que quizás algo estaba mal planteado — pero entendí que esto es justo lo que se espera cuando el algoritmo ya quedó bien generalizado: es lo que en TDD se llama triangulación. Es distinto a que un test pase "de gratis" por una implementación hardcodeada o por casualidad; acá pasaba porque la lógica general ya cubría ese comportamiento correctamente.
+
+**¿Qué aporta JaCoCo como herramienta de cobertura, más allá del porcentaje?**
+
+Al principio solo miraba el número final de cobertura, pero JaCoCo da mucho más que eso: te muestra visualmente, línea por línea y rama por rama, qué partes del código nunca se ejecutaron durante los tests. Eso fue útil para confirmar que el ~97-99% de cobertura que obtuvimos no era "hueco" — es decir, no era cobertura que viniera de tests triviales que solo tocan el código sin validar nada, sino que realmente correspondía a los casos de negocio que fuimos cubriendo con TDD. También sirvió como una especie de checklist visual: si veía una línea en rojo, era una señal de que me faltaba pensar en algún caso límite.
+
+**¿Qué valor aportó SonarQube al análisis del código?**
+
+SonarQube fue el que me hizo caer en cuenta de que "todos los tests pasan y la cobertura está alta" no es lo mismo que "el código está bien escrito". Encontró cosas que ni los tests ni yo habíamos notado: un campo que quedó sin usar, un if/else que se podía expresar de forma más clara con un switch, y una lambda donde en realidad convenía usar una referencia a método. Ninguno de esos problemas rompía la funcionalidad, pero sí afectaban la legibilidad y el mantenimiento del código a futuro. Me sirvió para entender que la calidad de software no se mide solo con pruebas, sino también con este tipo de análisis estático que revisa buenas prácticas y estilo.
