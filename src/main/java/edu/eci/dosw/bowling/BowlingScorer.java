@@ -5,7 +5,10 @@ import java.util.List;
 public class BowlingScorer {
 
     public int calculate(List<Frame> frames) {
-        // TODO: implementar con TDD
-        return 0;
+        int total = 0;
+        for (Frame frame : frames) {
+            total += frame.getPinsSum();
+        }
+        return total;
     }
 }

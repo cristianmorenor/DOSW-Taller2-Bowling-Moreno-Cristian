@@ -60,8 +60,7 @@ public class BowlingGame {
 
     /** Puntaje total. Lanza IllegalStateException si el juego no esta completo. */
     public int score() {
-        // TODO: implementar con TDD
-        return 0;
+        return new BowlingScorer().calculate(frames);
     }
 
     /** true cuando los 10 frames han sido completados. */
