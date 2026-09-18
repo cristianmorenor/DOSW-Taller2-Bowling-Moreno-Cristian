@@ -24,9 +24,13 @@ BowlTech S.A.S. quiere digitalizar el sistema de puntuación de sus pistas de bo
 
 ## 3. Evidencia TDD
 
-_Pendiente: capturas de consola de un ciclo RED -> GREEN -> REFACTOR._
+**RED** — caso A5, `roll()` debe lanzar `IllegalStateException` cuando el juego ya está completo (antes de implementar `isComplete()`):
 
-## 4. JaCoCo - Cobertura de código
+![Test en rojo](docs/evidence/tdd-red.png)
+
+**GREEN** — después de implementar `isComplete()` y `validateGameNotComplete()`, con los 8 casos del Módulo A pasando:
+
+![Tests en verde](docs/evidence/tdd-green.png)## 4. JaCoCo - Cobertura de código
 
 _Pendiente: capturas antes/después de alcanzar >=85% de cobertura._
 
