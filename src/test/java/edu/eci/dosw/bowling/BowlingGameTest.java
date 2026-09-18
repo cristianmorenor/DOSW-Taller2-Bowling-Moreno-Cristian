@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BowlingGameTest {
 
@@ -23,5 +24,18 @@ class BowlingGameTest {
         List<Frame> frames = game.getFrames();
         assertEquals(1, frames.size());
         assertEquals(List.of(0), frames.get(0).getRolls());
+    }
+
+    @Test
+    @DisplayName("roll(-1) lanza IllegalArgumentException")
+    void rollNegativePins_throwsException() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> game.roll(-1)
+        );
     }
 }
