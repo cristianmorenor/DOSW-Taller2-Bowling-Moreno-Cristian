@@ -100,4 +100,20 @@ class BowlingGameTest {
         assertEquals(List.of(10), frames.get(0).getRolls());
         assertEquals(List.of(3), frames.get(1).getRolls());
     }
+
+    @Test
+    @DisplayName("roll(5) + roll(5) marca el frame como SPARE")
+    void rollsSummingTen_marksFrameAsSpare() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act
+        game.roll(5);
+        game.roll(5);
+
+        // Assert
+        List<Frame> frames = game.getFrames();
+        assertEquals(1, frames.size());
+        assertEquals(FrameType.SPARE, frames.get(0).getType());
+    }
 }
