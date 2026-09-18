@@ -49,8 +49,15 @@ La cobertura se alcanzó de forma natural aplicando TDD estricto en los tres mó
 Las clases más ejercitadas fueron `BowlingGame` (por los casos de los Módulos A y C) y `BowlingScorer` (por los casos del Módulo B); las únicas líneas sin cubrir corresponden a ramas muy específicas no exigidas por ningún caso de prueba del taller.
 ## 5. SonarQube - Análisis estático
 
-_Pendiente: captura del dashboard (cobertura, issues, Quality Gate)._
+**Antes de corregir issues** — 3 issues de mantenibilidad (código sin usar, cadena if/else reemplazable por switch, lambda reemplazable por method reference), cobertura 96.8%:
 
+![Dashboard con issues](docs/evidence/sonarqube-dashboard.png)
+
+**Después de corregir** — 0 issues abiertos en todas las categorías (Security, Reliability, Maintainability), todas con calificación A, cobertura 96.7%, 0% duplicación:
+
+![Dashboard final](docs/evidence/sonarqube-final.png)
+
+**Quality Gate:** Passed (todas las condiciones del gate por defecto "Sonar way" se cumplen: cobertura en código nuevo 100%, 0 issues nuevos, duplicación 0%).
 ## 6. Pull Requests
 
 | PR | Fecha de merge | Módulo que cubre |
