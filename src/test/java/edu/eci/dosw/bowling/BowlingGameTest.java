@@ -82,4 +82,22 @@ class BowlingGameTest {
                 () -> game.roll(0)
         );
     }
+
+    @Test
+    @DisplayName("roll(10) marca el frame como STRIKE y avanza al siguiente frame")
+    void rollTenPins_marksFrameAsStrikeAndAdvances() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act
+        game.roll(10);
+        game.roll(3);
+
+        // Assert
+        List<Frame> frames = game.getFrames();
+        assertEquals(2, frames.size());
+        assertEquals(FrameType.STRIKE, frames.get(0).getType());
+        assertEquals(List.of(10), frames.get(0).getRolls());
+        assertEquals(List.of(3), frames.get(1).getRolls());
+    }
 }
