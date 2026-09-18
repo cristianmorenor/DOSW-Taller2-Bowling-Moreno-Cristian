@@ -11,16 +11,19 @@ public class BowlingScorer {
         int rollIndex = 0;
 
         for (Frame frame : frames) {
-            FrameType type = frame.getType();
-            if (type == FrameType.STRIKE) {
-                total += 10 + sumNext(allRolls, rollIndex + 1, 2);
-                rollIndex += 1;
-            } else if (type == FrameType.SPARE) {
-                total += 10 + sumNext(allRolls, rollIndex + 2, 1);
-                rollIndex += 2;
-            } else {
-                total += frame.getPinsSum();
-                rollIndex += frame.getRolls().size();
+            switch (frame.getType()) {
+                case STRIKE -> {
+                    total += 10 + sumNext(allRolls, rollIndex + 1, 2);
+                    rollIndex += 1;
+                }
+                case SPARE -> {
+                    total += 10 + sumNext(allRolls, rollIndex + 2, 1);
+                    rollIndex += 2;
+                }
+                default -> {
+                    total += frame.getPinsSum();
+                    rollIndex += frame.getRolls().size();
+                }
             }
         }
         return total;

@@ -30,20 +30,41 @@ BowlTech S.A.S. quiere digitalizar el sistema de puntuación de sus pistas de bo
 
 **GREEN** — después de implementar `isComplete()` y `validateGameNotComplete()`, con los 8 casos del Módulo A pasando:
 
-![Tests en verde](docs/evidence/tdd-green.png)## 4. JaCoCo - Cobertura de código
+![Tests en verde](docs/evidence/tdd-green.png)
 
-_Pendiente: capturas antes/después de alcanzar >=85% de cobertura._
+## 4. JaCoCo - Cobertura de código
 
+La cobertura se alcanzó de forma natural aplicando TDD estricto en los tres módulos (A, B y C) — no fue necesario escribir pruebas adicionales dedicadas solo a subir el porcentaje, ya que los 22 tests que verifican el comportamiento (validaciones, strike, spare, frame 10, cálculo de puntaje, `isComplete()`) ya cubrían casi todo el código de producción.
+
+**Resultado de mvn clean verify:**
+
+| Métrica | Cobertura |
+|---------|-----------|
+| Instrucciones | 99% |
+| Branches | 95% |
+| Líneas | ~98% (89 de 91 líneas) |
+
+![Reporte JaCoCo](docs/evidence/JacocoCoberage.png)
+
+Las clases más ejercitadas fueron `BowlingGame` (por los casos de los Módulos A y C) y `BowlingScorer` (por los casos del Módulo B); las únicas líneas sin cubrir corresponden a ramas muy específicas no exigidas por ningún caso de prueba del taller.
 ## 5. SonarQube - Análisis estático
 
-_Pendiente: captura del dashboard (cobertura, issues, Quality Gate)._
+**Antes de corregir issues** — 3 issues de mantenibilidad (código sin usar, cadena if/else reemplazable por switch, lambda reemplazable por method reference), cobertura 96.8%:
 
+![Dashboard con issues](docs/evidence/sonarqube-dashboard.png)
+
+**Después de corregir** — 0 issues abiertos en todas las categorías (Security, Reliability, Maintainability), todas con calificación A, cobertura 96.7%, 0% duplicación:
+
+![Dashboard final](docs/evidence/sonarqube-final.png)
+
+**Quality Gate:** Passed (todas las condiciones del gate por defecto "Sonar way" se cumplen: cobertura en código nuevo 100%, 0 issues nuevos, duplicación 0%).
 ## 6. Pull Requests
 
 | PR | Fecha de merge | Módulo que cubre |
 |----|-----------------|-------------------|
 | [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17 | Módulo A - `roll()` |
 | [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17 | Módulo B - `BowlingScorer.calculate()` |
+| [Módulo C: BowlingGame.isComplete() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/3) | 2026-09-17 | Módulo C - `isComplete()` |
 
 ## 7. Reflexión técnica
 
