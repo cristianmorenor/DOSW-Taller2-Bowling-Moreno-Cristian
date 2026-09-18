@@ -35,7 +35,8 @@ public class BowlingGame {
 
     private Frame getCurrentFrame() {
         if (frames.isEmpty() || frames.get(frames.size() - 1).isComplete()) {
-            Frame newFrame = new Frame();
+            boolean tenthFrame = frames.size() == 9;
+            Frame newFrame = new Frame(tenthFrame);
             frames.add(newFrame);
             return newFrame;
         }
@@ -43,6 +44,9 @@ public class BowlingGame {
     }
 
     private void validateFrameTotal(Frame frame, int pins) {
+        if (frame.isTenthFrame()) {
+            return;
+        }
         if (frame.getPinsSum() + pins > 10) {
             throw new IllegalArgumentException("La suma de pines en el frame no puede superar 10");
         }
