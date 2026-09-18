@@ -1,8 +1,17 @@
 package edu.eci.dosw.bowling;
 
-/**
- * Representa un frame del juego con sus tiros.
- * Se completará a medida que la implementación (TDD) lo requiera.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Frame {
+
+    private final List<Integer> rolls = new ArrayList<>();
+
+    public void addRoll(int pins) {
+        rolls.add(pins);
+    }
+
+    public List<Integer> getRolls() {
+        return List.copyOf(rolls);
+    }
 }
