@@ -44,6 +44,7 @@ _Pendiente: captura del dashboard (cobertura, issues, Quality Gate)._
 |----|-----------------|-------------------|
 | [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17 | Módulo A - `roll()` |
 | [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17 | Módulo B - `BowlingScorer.calculate()` |
+| [Módulo C: BowlingGame.isComplete() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/3) | 2026-09-17 | Módulo C - `isComplete()` |
 
 ## 7. Reflexión técnica
 
