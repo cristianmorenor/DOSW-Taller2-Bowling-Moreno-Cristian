@@ -43,6 +43,7 @@ _Pendiente: captura del dashboard (cobertura, issues, Quality Gate)._
 | PR | Fecha de merge | Módulo que cubre |
 |----|-----------------|-------------------|
 | [Módulo A: BowlingGame.roll() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/1) | 2026-09-17 | Módulo A - `roll()` |
+| [Módulo B: BowlingScorer.calculate() - TDD completo](https://github.com/cristianmorenor/DOSW-Taller2-Bowling-Moreno-Cristian/pull/2) | 2026-09-17 | Módulo B - `BowlingScorer.calculate()` |
 
 ## 7. Reflexión técnica
 

@@ -1,5 +1,6 @@
 package edu.eci.dosw.bowling;
 
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BowlingGameTest {
 
@@ -134,4 +137,95 @@ class BowlingGameTest {
             game.roll(10);
         });
     }
+
+    @Test
+    @DisplayName("isComplete() al inicio del juego retorna false")
+    void isComplete_atStart_returnsFalse() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act & Assert
+        assertFalse(game.isComplete());
+    }
+
+
+    @Test
+    @DisplayName("isComplete() despues de 9 frames completos retorna false")
+    void isComplete_after9Frames_returnsFalse() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+
+        // Act & Assert
+        assertFalse(game.isComplete());
+    }
+
+    @Test
+    @DisplayName("isComplete() con 10 frames normales completos retorna true")
+    void isComplete_after10NormalFrames_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 10; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+
+        // Act & Assert
+        assertTrue(game.isComplete());
+    }
+    @Test
+    @DisplayName("isComplete() con spare en frame 10 y tiro bonus ejecutado retorna true")
+    void isComplete_tenthFrameSpareWithBonus_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        game.roll(5);
+        game.roll(5); // spare frame 10
+        game.roll(7); // tiro bonus
+
+        // Act & Assert
+        assertTrue(game.isComplete());
+    }
+
+    @Test
+    @DisplayName("isComplete() con strike en frame 10 y 2 tiros bonus ejecutados retorna true")
+    void isComplete_tenthFrameStrikeWithTwoBonusRolls_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        game.roll(10); // strike frame 10
+        game.roll(6);
+        game.roll(3); // 2 tiros bonus
+
+        // Act & Assert
+        assertTrue(game.isComplete());
+    }
+
+    @Test
+    @DisplayName("isComplete() tras el juego perfecto (12 strikes) retorna true")
+    void isComplete_afterPerfectGame_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+
+        // Act
+        for (int i = 0; i < 12; i++) {
+            game.roll(10);
+        }
+
+        // Assert
+        assertTrue(game.isComplete());
+    }
+
+
+
+
 }
