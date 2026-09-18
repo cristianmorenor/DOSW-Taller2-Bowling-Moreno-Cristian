@@ -20,6 +20,24 @@ public class Frame {
     }
 
     public boolean isComplete() {
-        return rolls.size() >= 2;
+        return isStrike() || rolls.size() >= 2;
+    }
+
+    public FrameType getType() {
+        if (isStrike()) {
+            return FrameType.STRIKE;
+        }
+        if (isSpare()) {
+            return FrameType.SPARE;
+        }
+        return FrameType.NORMAL;
+    }
+
+    private boolean isStrike() {
+        return !rolls.isEmpty() && rolls.get(0) == 10;
+    }
+
+    private boolean isSpare() {
+        return rolls.size() == 2 && getPinsSum() == 10;
     }
 }
