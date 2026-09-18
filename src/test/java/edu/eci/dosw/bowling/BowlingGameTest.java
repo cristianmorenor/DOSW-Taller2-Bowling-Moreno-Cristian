@@ -193,6 +193,23 @@ class BowlingGameTest {
         assertTrue(game.isComplete());
     }
 
+    @Test
+    @DisplayName("isComplete() con strike en frame 10 y 2 tiros bonus ejecutados retorna true")
+    void isComplete_tenthFrameStrikeWithTwoBonusRolls_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        game.roll(10); // strike frame 10
+        game.roll(6);
+        game.roll(3); // 2 tiros bonus
+
+        // Act & Assert
+        assertTrue(game.isComplete());
+    }
+
 
 
 
