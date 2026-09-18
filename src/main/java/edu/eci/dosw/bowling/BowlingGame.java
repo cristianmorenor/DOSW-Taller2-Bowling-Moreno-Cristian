@@ -10,11 +10,11 @@ import java.util.List;
 public class BowlingGame {
 
     private final List<Frame> frames;
-    private int currentFrame;
+
 
     public BowlingGame() {
         this.frames = new ArrayList<>();
-        this.currentFrame = 0;
+
     }
 
     /** Registra pinos derribados. Lanza IllegalArgumentException si pines < 0 o > 10.

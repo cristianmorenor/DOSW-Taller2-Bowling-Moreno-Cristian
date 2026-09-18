@@ -138,7 +138,7 @@ class BowlingScorerTest {
         // Act & Assert
         assertThrows(
                 IllegalStateException.class,
-                () -> game.score()
+                game::score
         );
     }
 }
