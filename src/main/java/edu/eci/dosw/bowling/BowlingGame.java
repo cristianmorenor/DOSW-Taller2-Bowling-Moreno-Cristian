@@ -21,9 +21,24 @@ public class BowlingGame {
      *  Lanza IllegalStateException si el juego ya termino. */
     public void roll(int pins) {
         validatePinCount(pins);
-        Frame frame = new Frame();
+        Frame frame = getCurrentFrame();
+        validateFrameTotal(frame, pins);
         frame.addRoll(pins);
-        frames.add(frame);
+    }
+
+    private Frame getCurrentFrame() {
+        if (frames.isEmpty() || frames.get(frames.size() - 1).isComplete()) {
+            Frame newFrame = new Frame();
+            frames.add(newFrame);
+            return newFrame;
+        }
+        return frames.get(frames.size() - 1);
+    }
+
+    private void validateFrameTotal(Frame frame, int pins) {
+        if (frame.getPinsSum() + pins > 10) {
+            throw new IllegalArgumentException("La suma de pines en el frame no puede superar 10");
+        }
     }
 
     private void validatePinCount(int pins) {

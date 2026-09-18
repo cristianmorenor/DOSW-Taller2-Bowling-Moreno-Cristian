@@ -14,4 +14,12 @@ public class Frame {
     public List<Integer> getRolls() {
         return List.copyOf(rolls);
     }
+
+    public int getPinsSum() {
+        return rolls.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    public boolean isComplete() {
+        return rolls.size() >= 2;
+    }
 }
