@@ -2,6 +2,7 @@ package edu.eci.dosw.bowling;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -124,5 +125,20 @@ class BowlingScorerTest {
 
         // Assert
         assertEquals(300, game.score());
+    }
+
+    @Test
+    @DisplayName("score() lanza IllegalStateException si el juego no esta completo")
+    void scoreBeforeGameComplete_throwsException() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        game.roll(3);
+        game.roll(4);
+
+        // Act & Assert
+        assertThrows(
+                IllegalStateException.class,
+                () -> game.score()
+        );
     }
 }
