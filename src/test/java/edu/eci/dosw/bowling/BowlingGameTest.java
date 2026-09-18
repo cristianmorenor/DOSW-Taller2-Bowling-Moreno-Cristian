@@ -176,4 +176,24 @@ class BowlingGameTest {
         // Act & Assert
         assertTrue(game.isComplete());
     }
+    @Test
+    @DisplayName("isComplete() con spare en frame 10 y tiro bonus ejecutado retorna true")
+    void isComplete_tenthFrameSpareWithBonus_returnsTrue() {
+        // Arrange
+        BowlingGame game = new BowlingGame();
+        for (int i = 0; i < 9; i++) {
+            game.roll(3);
+            game.roll(4);
+        }
+        game.roll(5);
+        game.roll(5); // spare frame 10
+        game.roll(7); // tiro bonus
+
+        // Act & Assert
+        assertTrue(game.isComplete());
+    }
+
+
+
+
 }
